@@ -1,6 +1,17 @@
 document.addEventListener("DOMContentLoaded", function () {
     const itemForm = document.getElementById("itemForm");
     const responseDiv = document.getElementById("response");
+    const openModalButton = document.getElementById("openModalButton");
+    const closeModalButton = document.getElementById("closeModalButton");
+    const modal = document.getElementById("modal");
+
+    openModalButton.addEventListener("click", function () {
+        modal.style.display = "block";
+    });
+
+    closeModalButton.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
 
     itemForm.addEventListener("submit", function (event) {
         event.preventDefault();
