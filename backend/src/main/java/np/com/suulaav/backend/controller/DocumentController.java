@@ -1,7 +1,7 @@
 package np.com.suulaav.backend.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Example;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,12 +27,8 @@ public class DocumentController {
     return "done";
   }
 
-  @GetMapping(value = "/{id}")
-  public ResponseEntity<Items> getDocument(@PathVariable String id) {
-    Items items = new Items();
-    items.setId(id);
-    items.setQuantity(123123123);
-    Example<Items> example = Example.of(items);
-    return ResponseEntity.ok(documentRepository.findOne(example).get());
+  @GetMapping
+  public ResponseEntity<List<Items>> getDocument() {
+    return ResponseEntity.ok(documentRepository.findAll());
   }
 }

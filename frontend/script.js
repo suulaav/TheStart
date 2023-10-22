@@ -13,6 +13,23 @@ document.addEventListener("DOMContentLoaded", function () {
         modal.style.display = "none";
     });
 
+    function displayItemList() {
+        fetch("https://suulaav.com.np/backend/documents")
+            .then((response) => response.json())
+            .then((data) => {
+                itemList.innerHTML = ""; // Clear the previous list
+                data.forEach((item) => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `ID: ${item.id}, Name: ${item.name}, Quantity: ${item.quantity}, Category: ${item.category}`;
+                    itemList.appendChild(listItem);
+                });
+            })
+            .catch((error) => {
+                console.error("Error fetching items: " + error);
+            });
+    }
+    displayItemList();
+
     itemForm.addEventListener("submit", function (event) {
         event.preventDefault();
 
@@ -28,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: category,
         };
 
-        fetch("http://0.0.0.0/backend/documents", {
+        fetch("https://suulaav.com.np/backend/documents", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
