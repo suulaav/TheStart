@@ -9,5 +9,6 @@ wait
 alias mvn17="export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.8.0.7-1.fc38.x86_64 && mvn"
 mvn17 clean install
 wait
+cd ..
 docker-compose up -d --build
 wait
