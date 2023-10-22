@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Site</title>
+    <title>Create Item</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1>This is test</h1>
+<h1>Create an Item</h1>
+<button id="openModalButton">Open Modal</button>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalButton">&times;</span>
+        <h2>Enter Item Details</h2>
+        <form id="itemForm">
+            <label for="id">ID:</label>
+            <input type="text" id="id" required><br>
+
+            <label for="name">Name:</label>
+            <input type="text" id="name" required><br>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" required><br>
+
+            <label for="category">Category:</label>
+            <input type="text" id="category" required><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+<div id="response" class="modal-response"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
