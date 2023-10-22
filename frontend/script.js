@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
             category: category,
         };
 
-        fetch("http://0.0.0.0/backend", {
+        fetch("http://0.0.0.0/backend/documents", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
