@@ -39,4 +39,4 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /opt/start/db/mongodb_data
+      device: ../../start/db/mongodb_data
