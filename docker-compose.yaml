@@ -6,7 +6,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: test
       MONGO_INITDB_ROOT_PASSWORD: test
-      MONGO_INITDB_DATABASE: test
+      MONGO_INITDB_DATABASE: startdb
     ports:
       - "27017:27017"
     volumes:
