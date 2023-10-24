@@ -13,7 +13,7 @@ wait
 cd ..
 cd frontend || { echo "frontend folder not found, error during git clone";  exit  1; }
 wait
-npm install
+npm install --no-optional
 wait
 npm run build
 wait
