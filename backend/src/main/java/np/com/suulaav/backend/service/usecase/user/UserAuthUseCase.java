@@ -1,23 +1,22 @@
-package np.com.suulaav.backend.service.usecase.user.auth;
+package np.com.suulaav.backend.service.usecase.user;
 
 import np.com.suulaav.backend.core.service.api.UseCase;
 import np.com.suulaav.backend.core.utils.SecurityUtils;
 import np.com.suulaav.backend.core.utils.StringUtils;
 import np.com.suulaav.backend.reposotary.api.user.UserDao;
 import np.com.suulaav.backend.security.jwt.JwtHelper;
-import np.com.suulaav.backend.service.domain.user.AuthRequest;
-import np.com.suulaav.backend.service.domain.user.AuthResponse;
+import np.com.suulaav.backend.service.domain.user.UserAuthRequest;
+import np.com.suulaav.backend.service.domain.user.UserAuthResponse;
 import np.com.suulaav.backend.service.domain.user.UserDomain;
 import np.com.suulaav.backend.service.filter.user.DefaultUserFilter;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * @author Sulav created on 10/24/23
  */
-public class UserAuthUseCase implements UseCase<AuthRequest, AuthResponse> {
+public class UserAuthUseCase implements UseCase<UserAuthRequest, UserAuthResponse> {
   private final UserDao userDao;
 
   public UserAuthUseCase(UserDao userDao) {
@@ -25,26 +24,26 @@ public class UserAuthUseCase implements UseCase<AuthRequest, AuthResponse> {
   }
 
   @Override
-  public AuthResponse execute(AuthRequest request) {
+  public UserAuthResponse execute(UserAuthRequest request) {
     this.validate(request);
     UserDomain userDomain = this.getUser(request);
     this.prepareAuthResponse(userDomain);
     return this.prepareAuthResponse(userDomain);
   }
 
-  private AuthResponse prepareAuthResponse(UserDomain userDomain) {
-    AuthResponse authResponse = new AuthResponse();
-    authResponse.setUserName(userDomain.getUserName());
-    authResponse.setId(userDomain.getId());
+  private UserAuthResponse prepareAuthResponse(UserDomain userDomain) {
+    UserAuthResponse userAuthResponse = new UserAuthResponse();
+    userAuthResponse.setUserName(userDomain.getUserName());
+    userAuthResponse.setId(userDomain.getId());
     // TODO change clams to remove literals
     Map<String, Object> clams = new HashMap<>();
     clams.put("subject", userDomain.getId());
     clams.put("userName", userDomain.getUserName());
-    authResponse.setToken(JwtHelper.generate(clams));
-    return authResponse;
+    userAuthResponse.setToken(JwtHelper.generate(clams));
+    return userAuthResponse;
   }
 
-  private UserDomain getUser(AuthRequest request) {
+  private UserDomain getUser(UserAuthRequest request) {
     DefaultUserFilter defaultUserFilter = new DefaultUserFilter();
     defaultUserFilter.setUserName(request.getUserName());
     UserDomain userDomain =
@@ -60,7 +59,7 @@ public class UserAuthUseCase implements UseCase<AuthRequest, AuthResponse> {
   }
 
   @Override
-  public void validate(AuthRequest request) {
+  public void validate(UserAuthRequest request) {
     // TODO Proper exception handling
 
     if (StringUtils.isNullOrBlank(request.getUserName())) {

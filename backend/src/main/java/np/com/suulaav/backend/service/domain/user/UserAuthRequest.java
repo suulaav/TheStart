@@ -6,7 +6,7 @@ import lombok.Data;
  * @author Sulav created on 10/23/23
  */
 @Data
-public class AuthRequest {
+public class UserAuthRequest {
   private String userName;
   private String password;
 

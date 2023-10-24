@@ -8,7 +8,6 @@ import np.com.suulaav.backend.core.service.domain.AbstractDomain;
  */
 @Data
 public class UserDomain extends AbstractDomain {
-  private String id;
   private String userName;
   private String password;
 }

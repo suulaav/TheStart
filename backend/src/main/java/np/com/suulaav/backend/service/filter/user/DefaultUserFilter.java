@@ -9,10 +9,10 @@ import np.com.suulaav.backend.core.service.filter.AbstractFilter;
 /**
  * @author Sulav created on 10/24/23
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
 public class DefaultUserFilter extends AbstractFilter {
   private String userName;
 }
