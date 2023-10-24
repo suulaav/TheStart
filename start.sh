@@ -11,12 +11,6 @@ alias mvn17="export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-17.0.8.0.7-1.fc38.x86
 mvn17 clean install
 wait
 cd ..
-cd frontend || { echo "frontend folder not found, error during git clone";  exit  1; }
 wait
-npm install --no-optional
-wait
-npm run build
-wait
-cd ..
 docker-compose up -d --build
 wait
